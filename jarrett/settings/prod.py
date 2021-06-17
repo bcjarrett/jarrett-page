@@ -3,7 +3,7 @@ from urllib.parse import urlparse, uses_netloc
 
 # Setup
 DEBUG = False
-ALLOWED_HOSTS = ['', ]
+ALLOWED_HOSTS = ['jarrett.page', ]
 SECURE_SSL_REDIRECT = True
 
 # Database
