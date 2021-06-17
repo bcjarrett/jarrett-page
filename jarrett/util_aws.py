@@ -194,7 +194,7 @@ class S3CleanupTestCase(TestCase):
 
 def rsa_signer(message):
     private_key = serialization.load_pem_private_key(
-        settings.CLOUDFRONT_PEM.replace('\\r\\n', '||||||').encode().replace(b'||||||', b'\r\n'),
+        settings.CF_KEYPAIR_PEM.encode(),
         password=None,
         backend=default_backend()
     )
@@ -213,7 +213,7 @@ def signed_cf_url(bucket, key, expires_in_days=7):
           }}
        ]
     }}"""
-    cloudfront_signer = CloudFrontSigner(settings.CF_ACCESS_KEY, rsa_signer)
+    cloudfront_signer = CloudFrontSigner(settings.CF_KEYPAIR_ID, rsa_signer)
     return cloudfront_signer.generate_presigned_url(f'https://{bucket}/{key}', policy=policy)
 
 

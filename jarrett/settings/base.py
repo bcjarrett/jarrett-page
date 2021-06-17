@@ -94,7 +94,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
-
+STATICFILES_LOCATION = 'static'
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_DIRS = (
@@ -121,19 +121,25 @@ COMPRESS_PRECOMPILERS = (
     ('module', 'jarrett.compress_toolchain.precompilers.ES6Compiler'),
     ('css', 'jarrett.compress_toolchain.precompilers.SCSSCompiler'),
 )
+
+# AWS Credentials
+CF_ACCESS_KEY = conf['CF_ACCESS_KEY']                               # Programmatic access to CF account
+CF_SECRET_KEY = conf['CF_SECRET_KEY']
+
+S3_ACCESS_KEY = conf['S3_ACCESS_KEY']                               # Programmatic access to S3 account
+AWS_S3_ACCESS_KEY_ID = S3_ACCESS_KEY
+S3_SECRET_KEY = conf['S3_SECRET_KEY']
+AWS_SECRET_ACCESS_KEY = S3_SECRET_KEY
+CF_KEYPAIR_ID = conf['CF_KEYPAIR_ID']                               # Used to generate pre-signed urls
+CF_KEYPAIR_PEM = conf['CF_KEYPAIR_PEM']
+
+CF_STATIC_DISTRO_ID = conf['CF_STATIC_DISTRO_ID']                   # Distro ID used when invalidating manifest
 S3_STATIC_FILES_DOMAIN_NAME = conf['S3_STATIC_FILES_DOMAIN_NAME']
 S3_STATIC_FILES_BUCKET_NAME = conf['S3_STATIC_FILES_BUCKET_NAME']
 
-
-# AWS Credentials
-CF_ACCESS_KEY = conf['CF_ACCESS_KEY']               # Programmatic access to CF account
-CF_SECRET_KEY = conf['CF_SECRET_KEY']
-CF_KEYPAIR_KEY = conf['CF_KEYPAIR_KEY']             # Used to generate pre-signed urls
-CF_KEYPAIR_PEM = conf['CF_KEYPAIR_PEM']
-CF_STATIC_DISTRO_ID = conf['CF_STATIC_DISTRO_ID']   # Distro ID used when invalidating manifest
-S3_ACCESS_KEY = conf['S3_ACCESS_KEY']               # Programmatic access to S3 account
-S3_SECRET_KEY = conf['S3_SECRET_KEY']
-
+CF_PRIVATE_DISTRO_ID = conf['CF_PRIVATE_DISTRO_ID']
+S3_PRIVATE_FILES_BUCKET_NAME = conf['S3_PRIVATE_FILES_BUCKET_NAME']
+S3_PRIVATE_FILES_DOMAIN_NAME = conf['S3_PRIVATE_FILES_DOMAIN_NAME']
 
 COMPRESS_ENABLED = True
 

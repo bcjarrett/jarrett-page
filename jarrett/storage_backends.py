@@ -6,6 +6,8 @@ from jarrett.util_aws import invalidate_static_manifest
 
 
 class CustomS3BotoStorage(S3Boto3Storage):
+    access_key_names = ['S3_ACCESS_KEY']
+    secret_key_names = ['S3_SECRET_KEY']
     config = Config(
         connect_timeout=180,
         read_timeout=180,
@@ -21,6 +23,11 @@ class StaticStorage(CustomS3BotoStorage):
     AWS_IS_GZIPPED = True
     bucket_name = settings.S3_STATIC_FILES_BUCKET_NAME
     custom_domain = settings.S3_STATIC_FILES_DOMAIN_NAME
+
+
+class PrivateStorage(CustomS3BotoStorage):
+    bucket_name = settings.S3_PRIVATE_FILES_BUCKET_NAME
+    custom_domain = settings.S3_PRIVATE_FILES_DOMAIN_NAME
 
 
 class CachedStaticStorage(StaticStorage):
