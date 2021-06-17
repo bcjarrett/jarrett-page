@@ -1,0 +1,13 @@
+setup:
+  config: {}
+build:
+  packages:
+    - binutils
+    - libproj-dev
+    - gdal-bin
+  languages:
+    - nodejs
+    - python
+run:
+  release: python manage.py migrate
+  web: gunicorn jarrett.asgi --log-file -
