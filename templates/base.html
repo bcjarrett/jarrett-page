@@ -1,0 +1,36 @@
+{% load static %}
+{% load compress  %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>
+		{% block title %}
+		{% endblock %}
+		</title>
+
+		{% compress css %}
+			<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+			<link href="{% static 'fontawesome-free/css/all.min.css' %}" rel="stylesheet">
+		{% endcompress %}
+
+		{% block head %}
+		{% endblock %}
+	</head>
+
+	<body>
+	<main>
+		{% block sidebar %}
+		{% endblock %}
+		{% block content %}
+	  	{% endblock %}
+	</main>
+		{% compress js %}
+			<script src="{% static 'jquery.min.js' %}"></script>
+			<script src="{% static 'js/bootstrap.min.js' %}"></script>
+		{% endcompress %}
+		{% block js_late_load %}
+		{% endblock %}
+	</body>
+</html>
