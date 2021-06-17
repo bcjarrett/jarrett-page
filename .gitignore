@@ -1,0 +1,4 @@
+/node_modules
+/staticfiles
+/.idea
+/secrets.json
