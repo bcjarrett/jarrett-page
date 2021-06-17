@@ -1,2 +1,2 @@
 release: python manage.py migrate
-web: gunicorn jarrett.asgi --log-file -
+web: gunicorn jarrett.wsgi --log-file -

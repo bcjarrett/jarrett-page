@@ -23,7 +23,7 @@ DATABASES = {
 # Static files
 CF_STATIC_DISTRO_ID = conf['CF_STATIC_DISTRO_ID']
 STATICFILES_STORAGE = 'jarrett.storage_backends.CachedStaticStorage'
-STATIC_URL = conf['STATIC_URL']     #'https://d-static.geomatix.us/static/'
+STATIC_URL = conf['STATIC_URL']
 
 # Compressor
 COMPRESS_STORAGE = STATICFILES_STORAGE
