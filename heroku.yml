@@ -8,6 +8,8 @@ build:
   languages:
     - nodejs
     - python
+release:
+  command:
+    - python manage.py migrate
 run:
-  release: python manage.py migrate
   web: gunicorn jarrett.asgi --log-file -
