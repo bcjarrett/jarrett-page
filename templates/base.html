@@ -1,42 +1,291 @@
 {% load static %}
-{% load compress  %}
+{% load compress %}
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>
 		{% block title %}
 		{% endblock %}
-		</title>
+	</title>
 
-		{#	TODO: CSS is all over the place, consolidate once styling is complete #}
-		{% compress css %}
-			<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
-			<link href="{% static 'fontawesome-free/css/all.min.css' %}" rel="stylesheet">
-		{% endcompress %}
-		<style>
-			body {
-				background-color: #F5F5F5;
-				font-family: Raleway;
+	{#	TODO: CSS is all over the place, consolidate once styling is complete #}
+	{% compress css %}
+		<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+		<link href="{% static 'fontawesome-free/css/all.min.css' %}" rel="stylesheet">
+	{% endcompress %}
+	<style>
+		body {
+			min-height: 100vh;
+			min-height: -webkit-fill-available;
+		}
+
+		html {
+			height: -webkit-fill-available;
+		}
+
+		main {
+			display: flex;
+			flex-wrap: nowrap;
+			height: 100vh;
+			height: -webkit-fill-available;
+			max-height: 100vh;
+			overflow-x: auto;
+			background-color: #3E6680;
+			box-shadow: inset 0 0 1rem rgba(0, 0, 0, .75);
+			min-height: 100vh;
+		}
+
+		@media (min-width: 768px) {
+			main {
+				margin-left: 250px;
 			}
-		</style>
-		{% block head %}
-		{% endblock %}
-	</head>
 
-	<body>
-		{% block sidebar %}
-		{% endblock %}
-		<main>
-		{% block content %}
-	  	{% endblock %}
-	</main>
-		{% compress js %}
-			<script src="{% static 'jquery.min.js' %}"></script>
-			<script src="{% static 'js/bootstrap.min.js' %}"></script>
-		{% endcompress %}
-		{% block js_late_load %}
-		{% endblock %}
-	</body>
+		}
+
+		@media (max-width: 767.98px) {
+			main {
+				margin-left: 2.75rem;
+			}
+
+		}
+
+		.sidebar {
+			height: 100vh;
+			position: fixed;
+			width: 250px;
+			background-color: #F5F5F5;
+		}
+
+		.bi {
+			vertical-align: -.125em;
+			pointer-events: none;
+			fill: currentColor;
+		}
+
+		.nav-flush .nav-link {
+			border-radius: 0;
+		}
+
+		.btn-toggle-nav a {
+			display: inline-flex;
+			padding: .1875rem .5rem;
+			margin-top: .125rem;
+			margin-left: 1.25rem;
+			text-decoration: none;
+		}
+
+		.btn-toggle-nav a:hover,
+		.btn-toggle-nav a:focus {
+			background-color: #F6F6F6;
+		}
+
+		.active {
+			background: #6D2E46; /* #A26769 */
+			box-shadow: inset 0 0 .5rem rgba(0, 0, 0, .75);
+
+		}
+
+		.nav-lg .active {
+			width: calc(100% + 1rem);
+		}
+
+		.active > .nav-link {
+			color: #F6F6F6;
+		}
+
+		.active > .nav-link:hover, .active > .nav-link:focus {
+			color: #F6F6F6;
+		}
+
+		.nav-link {
+			color: #070707;
+		}
+
+		.nav-link:hover, .nav-link:focus {
+			color: #070707;
+		}
+
+		.nav-item.active img {
+			-webkit-filter: invert(1);
+			filter: invert(1);
+		}
+
+		.nav-icon {
+			padding: .5rem .5rem;
+		}
+
+		.content-window {
+			background-color: #3E6680;
+		}
+
+		body {
+			background-color: #F5F5F5;
+			font-family: Raleway;
+		}
+
+		.divider {
+			background-color: #3E6680;
+			height: 15px;
+		}
+
+		.card {
+			border-radius: 0;
+			border: 8px solid #F5F5F5;
+		}
+
+		.expandable {
+			transition: all .5s ease-in-out;
+		}
+
+		.expandable:target {
+			display: flex;
+		}
+	</style>
+	{% block head %}
+	{% endblock %}
+</head>
+
+<body>
+<div class="d-flex flex-column flex-shrink-0 sidebar d-block d-md-none nav-sm" style="width: 2.75rem;">
+	<ul class="nav nav-pills nav-flush flex-column mb-auto">
+		<li class="nav-item" data-ref="about-me">
+			<a href="#about-me" class="nav-link nav-icon py-3 border-bottom text-center">
+				<i class="far fa-address-card fa-lg"></i>
+			</a>
+		</li>
+
+		<li class="nav-item" data-ref="django-apps">
+			<a href="#django-apps" class="nav-link nav-icon py-3 border-bottom text-center" style="height: 57px">
+				<img src="{% static 'images/dj_icon_black.png' %}" alt="Django" class="bi me-2" width="16" height="16"
+					 style="margin-left: 4px"/>
+			</a>
+		</li>
+
+		<li class="nav-item" data-ref="small-projects">
+			<a href="#small-projects" class="nav-link nav-icon py-3 border-bottom text-center">
+				<i class="fab fa-python fa-lg"></i>
+			</a>
+		</li>
+		<li class="nav-item" data-ref="websites">
+			<a href="#websites" class="nav-link nav-icon py-3 border-bottom text-center">
+				<i class="far fa-window-restore fa-lg"></i>
+			</a>
+		</li>
+
+	</ul>
+</div>
+<div class="d-flex flex-column flex-shrink-0 p-3 sidebar d-none d-md-block nav-lg">
+	<a href="/" class="d-flex align-items-center nav-link text-decoration-none">
+		<span class="fs-4 ms-3 ">jarrett.page</span>
+	</a>
+	<hr>
+	<ul class="nav nav-pills flex-column mb-auto">
+		<li class="nav-item" data-ref="about-me">
+			<a href="#about-me" class="nav-link nav-link">
+				<i class="far fa-address-card me-2 "></i>
+				About Me
+			</a>
+		</li>
+		<li class="nav-item" data-ref="django-apps">
+			<a href="#django-apps" class="nav-link nav-link">
+				<img src="{% static 'images/dj_icon_black.png' %}" alt="Django" class="bi me-2"
+					 width="15.45"
+					 height="15.45"/>
+				Django Apps
+			</a>
+		</li>
+		<li class="nav-item" data-ref="small-projects">
+			<a href="#small-projects" class="nav-link nav-link">
+				<i class="fab fa-python me-2"></i>
+				Small Projects
+			</a>
+		</li>
+		<li class="nav-item" data-ref="websites">
+			<a href="#websites" class="nav-link nav-link">
+				<i class="far fa-window-restore me-2"></i>
+				Websites
+			</a>
+		</li>
+	</ul>
+	<hr>
+	<div>
+		<a href="https://github.com/bcjarrett" class="d-flex align-items-center nav-link text-decoration-none">
+			<img src="https://github.com/bcjarrett.png" alt="" width="32" height="32" class="rounded-circle me-2">
+			Github
+		</a>
+	</div>
+</div>
+<main>
+	<div class="content-container vw-100">
+		<div class="container-fluid m-3 w-auto min-vh-100 d-flex flex-column justify-content-center section-container"
+			 id="about-me">
+			{% include 'portfolio/about_me.html' %}
+		</div>
+		<div class="container-fluid m-3 w-auto min-vh-100 d-flex flex-column justify-content-center section-container"
+			 id="django-apps">
+			{% include 'portfolio/django_apps.html' %}
+		</div>
+		<div class="container-fluid m-3 w-auto min-vh-100 d-flex flex-column justify-content-center section-container"
+			 id="small-projects">
+			{% include 'portfolio/small_projects.html' %}
+		</div>
+		<div class="container-fluid m-3 w-auto min-vh-100 d-flex flex-column justify-content-center section-container"
+			 id="websites">
+			{% include 'portfolio/websites.html' %}
+		</div>
+	</div>
+</main>
+{% compress js %}
+	<script src="{% static 'jquery.min.js' %}"></script>
+	<script src="{% static 'js/bootstrap.min.js' %}"></script>
+{% endcompress %}
+<script>
+    $(function () {
+        const sidebarLinkHandler = () => {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        }
+        const scrollHandlerSidebarLinks = () => {
+            $('main').scroll(function () {
+                const contentSection = $('.section-container')
+                let offset = contentSection.map(function () {
+                    let _ = $(this)
+                    let _id = _.attr('id')
+                    return {
+                        offset: _.offset().top,
+                        id: _id
+                    }
+                })
+                offset = offset.toArray()
+                const closest = offset.reduce(function (prev, curr) {
+                    return (Math.abs(curr.offset) < Math.abs(prev.offset) ? curr : prev)
+                })
+                let inactiveNavItems = $('.nav-item').not('[data-ref="' + closest.id + '"]')
+                const navItemPair = $('[data-ref="' + closest.id + '"]')
+                inactiveNavItems.each(function () {
+                    $(this).removeClass('active')
+                })
+                navItemPair.each(function () {
+                    $(this).addClass('active')
+                })
+            });
+        }
+
+		sidebarLinkHandler()
+		scrollHandlerSidebarLinks()
+    })
+</script>
+{% block js_late_load %}
+{% endblock %}
+</body>
+
 </html>

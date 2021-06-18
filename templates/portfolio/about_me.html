@@ -1,22 +1,9 @@
-{% block head %}
-	<style>
-		.divider {
-			background-color: #3E6680;
-			height: 15px;
-		}
-	</style>
-{% endblock %}
-<div class="container-fluid m-3">
-	<div class="row">
-		{% include 'portfolio/text_card.html' with title="Title" content="Content" %}
-		{% include 'portfolio/image_card.html' with src="https://via.placeholder.com/150" alt="..." %}
-	</div>
-	<div class="divider my-3 rounded-2"></div>
-	<div class="row">
-		<div class="row">
-			{% include 'portfolio/image_card.html' with src="https://via.placeholder.com/300" alt="..." %}
-			{% include 'portfolio/text_card.html' with title="Title" content="Content" %}
-		</div>
-	</div>
+<div class="row">
+	{% include 'portfolio/helpers/text_card.html' with title="About Me" content="Content" %}
+	{% include 'portfolio/helpers/image_card.html' with src="https://via.placeholder.com/150" alt="..." %}
+</div>
+<div class="row">
+	{% include 'portfolio/helpers/image_card.html' with src="https://via.placeholder.com/300" alt="..." %}
+	{% include 'portfolio/helpers/text_card.html' with title="Title" content="Content" %}
 </div>
 
