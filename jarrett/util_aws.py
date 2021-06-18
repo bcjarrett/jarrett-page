@@ -246,7 +246,7 @@ def invalidate_static_manifest(name):
                         f'/{settings.STATICFILES_LOCATION}/{name}',
                     ]
                 },
-                'CallerReference': 'geomatix.us'
+                'CallerReference': 'jarrett.page'
             }
         )
     except Exception as e:
