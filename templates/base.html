@@ -16,6 +16,8 @@
 		<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
 		<link href="{% static 'fontawesome-free/css/all.min.css' %}" rel="stylesheet">
 	{% endcompress %}
+	<link rel="stylesheet"
+		  href="https://fonts.googleapis.com/css?family=Raleway">
 	<style>
 		body {
 			min-height: 100vh;
@@ -123,7 +125,7 @@
 
 		body {
 			background-color: #F5F5F5;
-			font-family: Raleway;
+			font-family: Raleway, sans-serif;
 		}
 
 		.divider {
@@ -131,7 +133,7 @@
 			height: 15px;
 		}
 
-		.card {
+		.content-border {
 			border-radius: 0;
 			border: 8px solid #F5F5F5;
 		}
@@ -178,7 +180,7 @@
 	</ul>
 </div>
 <div class="d-flex flex-column flex-shrink-0 p-3 sidebar d-none d-md-block nav-lg">
-	<a href="/" class="d-flex align-items-center nav-link text-decoration-none">
+	<a href="#intro" class="d-flex align-items-center nav-link text-decoration-none">
 		<span class="fs-4 ms-3 ">jarrett.page</span>
 	</a>
 	<hr>
@@ -221,6 +223,10 @@
 <main>
 	<div class="content-container vw-100">
 		<div class="container-fluid m-3 w-auto min-vh-100 d-flex flex-column justify-content-center section-container"
+			 id="intro">
+			{% include 'portfolio/intro.html' %}
+		</div>
+		<div class="container-fluid m-3 w-auto min-vh-100 d-flex flex-column justify-content-center section-container"
 			 id="about-me">
 			{% include 'portfolio/about_me.html' %}
 		</div>
@@ -244,7 +250,7 @@
 {% endcompress %}
 <script>
     $(function () {
-        const sidebarLinkHandler = () => {
+        const sidebarLinkClickHandler = () => {
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
                     e.preventDefault();
@@ -280,7 +286,7 @@
             });
         }
 
-		sidebarLinkHandler()
+		sidebarLinkClickHandler()
 		scrollHandlerSidebarLinks()
     })
 </script>
