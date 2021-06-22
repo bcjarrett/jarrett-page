@@ -1,13 +1,15 @@
 {
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.1",
+    "bootstrap": "^5.x.x",
+    "jquery": "^3.6.0"
+  },
+  "devDependencies": {
     "@babel/core": "^7.0.0",
     "@babel/preset-env": "^7.12.11",
-    "@fortawesome/fontawesome-free": "^5.15.1",
     "babel-preset-es2015": "^6.24.1",
     "babelify": "10.0.x",
-    "bootstrap": "^5.x.x",
     "browserify": "^17.0.0",
-    "jquery": "^3.6.0",
     "node-sass": "5.0.x",
     "postcss": "^8.1.0",
     "postcss-cli": "8.3.x"

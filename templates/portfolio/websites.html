@@ -1,39 +1,49 @@
-<div class="row">
-	<div class="col d-flex align-items-center">
-		<div class="card mt-2 mt-sm-0 shadow-lg w-100 content-border">
-			<div class="card-body shadow-sm">
-				<h2 class="card-title">This Website</h2>
-				<p class="card-text">Please see the <a href="https://github.com/bcjarrett/jarrett_page">source code to
-					this website</a> on my github. This page is:</p>
-				<ul>
-					<li>Hosted on a Heroku dyno</li>
-					<li>Routed via Cloudflare</li>
-					<li>Files are hosted on S3</li>
-					<li>Files are served via CloudFront</li>
-					<li>JS and CSS is packed via webpack</li>
-					<li>JS and CSS is minified with rcssmin and rjsmin</li>
-				</ul>
+<div class="section-container jarrett-page" id="websites">
+	<div class="project-section">
+		<div class="row min-vh-100">
+			<div class="col d-flex align-items-center">
+				<div class="card mt-2 mt-sm-0 shadow-lg w-100 content-border">
+					<div class="card-body shadow-sm">
+						<h2 class="card-title"><a href="{% url 'index' %}">This Website</a></h2>
+						<p class="card-text">Please see the <a href="https://github.com/bcjarrett/jarrett_page">source
+							code to
+							this website</a> on my github. This page is:</p>
+						<ul>
+							<li>Hosted on a Heroku dyno</li>
+							<li>Routed via Cloudflare</li>
+							<li>Files are hosted on S3</li>
+							<li>Files are served via CloudFront</li>
+							<li>JS and CSS is packed via webpack</li>
+							<li>JS and CSS is minified with rcssmin and rjsmin</li>
+						</ul>
+					</div>
+				</div>
 			</div>
+			{% include 'portfolio/helpers/image_card.html' with src="images/geomatix_us.jpg" alt="..." %}
 		</div>
 	</div>
-	{% include 'portfolio/helpers/image_card.html' with src="images/geomatix_us.jpg" alt="..." %}
 </div>
-<!-- TODO: Add spacer -->
-<div class="row">
-	<div class="row">
-		{% include 'portfolio/helpers/image_card.html' with src="images/geomatix_us.jpg" alt="..." %}
-		<div class="col d-flex align-items-center">
-			<div class="card mt-2 mt-sm-0 shadow-lg w-100 content-border">
-				<div class="card-body shadow-sm">
-					<h2 class="card-title">Geomatix.us</h2>
-					<p class="card-text">This property has all the same attributes as above. It also supports:</p>
-					<ul>
-						<li>Blog signups</li>
-						<li>A simple, hand-rolled blog posting system</li>
-						<li>Dynamic services rendering</li>
-						<li>Pilot applications and tracking</li>
-						<li>Click tracking with Google Ads</li>
-					</ul>
+<div class="divider-sm"></div>
+<div class="section-container geomatix-us" id="websites">
+	<div class="project-section">
+		<div class="row min-vh-100">
+			<div class="row">
+				{% include 'portfolio/helpers/image_card.html' with src="images/geomatix_us.jpg" alt="..." %}
+				<div class="col d-flex align-items-center">
+					<div class="card mt-2 mt-sm-0 shadow-lg w-100 content-border">
+						<div class="card-body shadow-sm">
+							<h2 class="card-title"><a href="https://geomtaix.us">Geomatix.us</a></h2>
+							<p class="card-text">This property has all the same attributes as above. It also
+								supports:</p>
+							<ul>
+								<li>Blog signups</li>
+								<li>A simple, hand-rolled blog posting system</li>
+								<li>Dynamic services rendering</li>
+								<li>Pilot applications and tracking</li>
+								<li>Click tracking with Google Ads</li>
+							</ul>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
