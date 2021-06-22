@@ -1,7 +1,8 @@
+{% load static %}
 <div class="col d-flex align-items-center justify-content-center">
 	<div class="card mt-2 mt-sm-0 shadow-lg rounded-2 content-border">
 		<div class="card-body shadow-sm">
-			<img src="{{ src }}" class="img-fluid " alt="{{ alt }}">
+			<img src="{% static src %}" class="img-fluid " alt="{{ alt }}">
 		</div>
 	</div>
 </div>

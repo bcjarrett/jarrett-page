@@ -153,19 +153,12 @@
 <body>
 <div class="d-flex flex-column flex-shrink-0 sidebar d-block d-md-none nav-sm" style="width: 2.75rem;">
 	<ul class="nav nav-pills nav-flush flex-column mb-auto">
-		<li class="nav-item" data-ref="about-me">
-			<a href="#about-me" class="nav-link nav-icon py-3 border-bottom text-center">
-				<i class="far fa-address-card fa-lg"></i>
-			</a>
-		</li>
-
 		<li class="nav-item" data-ref="django-apps">
 			<a href="#django-apps" class="nav-link nav-icon py-3 border-bottom text-center" style="height: 57px">
 				<img src="{% static 'images/dj_icon_black.png' %}" alt="Django" class="bi me-2" width="16" height="16"
 					 style="margin-left: 4px"/>
 			</a>
 		</li>
-
 		<li class="nav-item" data-ref="small-projects">
 			<a href="#small-projects" class="nav-link nav-icon py-3 border-bottom text-center">
 				<i class="fab fa-python fa-lg"></i>
@@ -176,7 +169,6 @@
 				<i class="far fa-window-restore fa-lg"></i>
 			</a>
 		</li>
-
 	</ul>
 </div>
 <div class="d-flex flex-column flex-shrink-0 p-3 sidebar d-none d-md-block nav-lg">
@@ -185,12 +177,6 @@
 	</a>
 	<hr>
 	<ul class="nav nav-pills flex-column mb-auto">
-		<li class="nav-item" data-ref="about-me">
-			<a href="#about-me" class="nav-link nav-link">
-				<i class="far fa-address-card me-2 "></i>
-				About Me
-			</a>
-		</li>
 		<li class="nav-item" data-ref="django-apps">
 			<a href="#django-apps" class="nav-link nav-link">
 				<img src="{% static 'images/dj_icon_black.png' %}" alt="Django" class="bi me-2"
@@ -226,18 +212,18 @@
 			 id="intro">
 			{% include 'portfolio/intro.html' %}
 		</div>
-		<div class="container-fluid m-3 w-auto min-vh-100 d-flex flex-column justify-content-center section-container"
-			 id="about-me">
-			{% include 'portfolio/about_me.html' %}
-		</div>
+		<!-- TODO: Add CSS for these HR -->
+		<hr>
 		<div class="container-fluid m-3 w-auto min-vh-100 d-flex flex-column justify-content-center section-container"
 			 id="django-apps">
 			{% include 'portfolio/django_apps.html' %}
 		</div>
+		<hr>
 		<div class="container-fluid m-3 w-auto min-vh-100 d-flex flex-column justify-content-center section-container"
 			 id="small-projects">
 			{% include 'portfolio/small_projects.html' %}
 		</div>
+		<hr>
 		<div class="container-fluid m-3 w-auto min-vh-100 d-flex flex-column justify-content-center section-container"
 			 id="websites">
 			{% include 'portfolio/websites.html' %}
