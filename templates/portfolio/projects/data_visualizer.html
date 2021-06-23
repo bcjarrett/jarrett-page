@@ -1,0 +1,37 @@
+{% extends 'portfolio/helpers/text_card.html' %}
+
+{% block image_right %}
+	{% include 'portfolio/helpers/image_card.html' with src="images/geomatix_data_visualizer.jpg" alt="Geomatix data visualizer" %}
+{% endblock %}
+
+{% block text_content %}
+	<h2 class="card-title">GIS Data Visualizer</h2>
+	<p class="card-text">
+		At Geomatix, most of our deliverables are incredibly cumbersome and unfamiliar filetypes. A
+		typical project ends up with a raster map greater than 3GB and a .las file point-cloud of a similar
+		size. For many of our clients, particularly those on the management teams, using these files is near
+		impossible. To make our work-products more accessible, I designed, developed, deployed, and maintained a
+		customer-facing website where we could host these files and share them with our clients in a
+		way that didn't requires advanced software or know-how.
+	</p>
+	<p class="card-text">
+		This project is a large django app, deployed to Heroku. Files are hosted on AWS S3 and
+		served over AWS CloudFront. Clients are invited to a website that is not accessible to the public where they
+		may view, manipulate, and download their data. The open source projects
+		<a href="https://openlayers.org/">OpenLayers</a> and <a
+			href="https://potree.github.io/">Potree</a>
+		have been used as the primary visualization tools.
+	</p>
+	<p class="card-text">
+		A large part of the project is built to pre-process and upload the
+		many thousands of files required for a single dataset. While the project was originally
+		designed to handle this pre-processing in a separate celery queue, cost concerns have dictated that we
+		perform data-preprocessing locally and upload the final files directly to S3.
+	</p>
+	<p class="card-text">
+		While the source code for this is largely owned by my employer, they have allowed me to
+		share
+		<a href="https://download.geomatix.us/visualizer/shared-project/?token=c0aea622-7020-45ad-b633-25789f633abc&project_guid=a13689c2-50b9-4390-9f2f-3b30c0336140">
+			a link to a set of sample dataset</a> in my portfolio.
+	</p>
+{% endblock %}

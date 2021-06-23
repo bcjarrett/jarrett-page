@@ -1,0 +1,30 @@
+{% extends 'portfolio/helpers/text_card.html' %}
+{% load static %}
+{% block image_left %}
+	<div class="col d-flex align-items-center justify-content-center">
+		<img class="img-fluid rounded-circle content-border w-75" src="{% static 'images/headshot.jpg' %}" alt="Ben Jarrett"/>
+	</div>
+{% endblock %}
+{% block text_content %}
+	<h2 class="card-title">About Me</h2>
+	<p class="card-text">
+		My name is Ben Jarrett, I currently reside in Philadelphia, Pennsylvania. I'm a full-stack developer with
+		roughly 10 years professional experience. I have personal and professional development experience in a number
+		of fields:
+	</p>
+	<ul>
+		<li>Full-stack web development</li>
+		<li>SQL database management</li>
+		<li>GIS data processing</li>
+		<li>AWS hosting and deployment</li>
+		<li>Legacy VBA and Access support</li>
+		<li>Windows system deployment</li>
+		<li>CRM administration</li>
+	</ul>
+	<p>
+		For the past three years, I've been working for small drone startup, Geomatix, where I wore a
+		number of hats.	I spend a good amount of time in the field, a lot of time processing CAD and GIS data with
+		third-party and self made tools, and a fair amount of time managing the full customer lifecycle of all our
+		clients	from marketing to invoicing.
+	</p>
+{% endblock %}

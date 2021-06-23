@@ -1,0 +1,17 @@
+{% extends 'portfolio/helpers/text_card.html' %}
+{% block image_left %}
+	{% include 'portfolio/helpers/image_card.html' with src="images/geomatix_us.jpg" alt="jarrett.page" %}
+{% endblock %}
+{% block text_content %}
+	<h2 class="card-title"><a href="{% url 'index' %}">This Website</a></h2>
+	<p class="card-text">Please see the <a href="https://github.com/bcjarrett/jarrett_page">
+		source code to this website</a> on my github. This page is:</p>
+	<ul>
+		<li>Hosted on a Heroku dyno</li>
+		<li>Routed via Cloudflare</li>
+		<li>Files are hosted on S3</li>
+		<li>Files are served via CloudFront</li>
+		<li>JS is transpiled via webpack</li>
+		<li>JS and CSS is minified with rcssmin and rjsmin</li>
+	</ul>
+{% endblock %}

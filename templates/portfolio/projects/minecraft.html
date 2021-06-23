@@ -1,0 +1,18 @@
+{% extends 'portfolio/helpers/text_card.html' %}
+{% block image_left %}
+	{% include 'portfolio/helpers/image_card.html' with src="images/minecraft.jpg" alt="Minecraft" %}
+{% endblock %}
+{% block text_content %}
+	<h2 class="card-title">Minecraft Server Hosting</h2>
+	<p class="card-text">
+		This is a django app adapted from an opensource flask app. Hosted on my personal website, it
+		allows me and my friends access to a tool that can affordably manage and host new or stored
+		minecraft instances.
+	</p>
+	<p class="card-text">
+		This app is capable of provisioning new EC2 instances, setting them up with a standard AMI,
+		installing and configuring the newest version of minecraft, and returning a public IP address for
+		client connection. It also allows users to spin-down instances at will, and automatically turns off running EC2
+		instances after a set amount of downtime.
+	</p>
+{% endblock %}

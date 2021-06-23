@@ -1,0 +1,15 @@
+{% extends 'portfolio/helpers/text_card.html' %}
+{% block image_right %}
+	{% include 'portfolio/helpers/image_card.html' with src="images/geomatix_us.jpg" alt="Geomatix.us" %}
+{% endblock %}
+{% block text_content %}
+	<h2 class="card-title"><a href="https://geomtaix.us">Geomatix.us</a></h2>
+	<p class="card-text">This property has all the same attributes as above. It also supports:</p>
+	<ul>
+		<li>Blog signups</li>
+		<li>A simple, hand-rolled blog posting system</li>
+		<li>Dynamic services rendering</li>
+		<li>Pilot applications and tracking</li>
+		<li>Click tracking with Google Ads</li>
+	</ul>
+{% endblock %}

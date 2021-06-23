@@ -1,8 +1,20 @@
-<div class="col d-flex align-items-center">
-	<div class="card mt-2 mt-sm-0 shadow-lg w-100 content-border">
-		<div class="card-body shadow-sm">
-			<h2 class="card-title">{{ title }}</h2>
-			<p class="card-text">{{ content }}</p>
+<div class="section-container {{ class }}" id="{{ id }}">
+	<div class="bg-image-overlay">
+		<div class="project-section">
+			<div class="row min-vh-100">
+			{% block image_left %}
+			{% endblock %}
+				<div class="col-lg col-xs-12 py-3 d-flex align-items-center">
+					<div class="card mt-2 mt-sm-0 shadow-lg w-100 content-border">
+						<div class="card-body shadow-sm">
+							{% block text_content %}
+							{% endblock %}
+						</div>
+					</div>
+				</div>
+			{% block image_right %}
+			{% endblock %}
+			</div>
 		</div>
 	</div>
 </div>

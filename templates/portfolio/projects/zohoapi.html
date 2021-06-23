@@ -1,0 +1,18 @@
+{% extends 'portfolio/helpers/text_card.html' %}
+{% block image_left %}
+	{% include 'portfolio/helpers/image_card.html' with src="images/zohoapi_pypi.jpg" alt="Zoho" %}
+{% endblock %}
+{% block text_content %}
+	<h2 class="card-title">Zoho CRM API</h2>
+	<p class="card-text">
+		This project is a simple python wrapper for the Zoho CRM web API. It has since been
+		rendered obsolete by the release of a V2 for their API as well as an official python wrapper. This project
+		uses simple token authentication and support all basic CRUD operations as well as a handful
+		or more advanced features for handling complex CRM objects.
+	</p>
+	<p class="card-text">
+		This project is available for download on <a
+			href="https://pypi.org/project/zohoapi/">pypi</a>
+		but has not been updated or maintained since early 2019 as it is completely depreciated at this point.
+	</p>
+{% endblock %}

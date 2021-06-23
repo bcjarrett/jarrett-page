@@ -1,0 +1,18 @@
+{% extends 'portfolio/helpers/text_card.html' %}
+{% block image_right %}
+	{% include 'portfolio/helpers/image_card.html' with src="images/discord.jpg" alt="Discord" %}
+{% endblock %}
+{% block text_content %}
+	<h2 class="card-title">Discord Game Tracker</h2>
+	<p class="card-text">
+		A small discord bot I built for a server I share with some friends. It primarily tracks
+		games we'd
+		like to play and preforms a handful of other functions. This bot was never meant as a
+		terribly
+		serious project, but as an excuse to check out the discord and steam APIs.
+	</p>
+	<p class="card-text">
+		This project is hosted solely on my local machine, source code is visible on
+		<a href="https://github.com/bcjarrett/discord_games_tracker">github</a>.
+	</p>
+{% endblock %}
