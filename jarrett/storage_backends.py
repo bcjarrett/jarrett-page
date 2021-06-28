@@ -43,6 +43,6 @@ class CachedStaticStorage(StaticStorage):
     def save(self, name, content, max_length=None):
         self.local_storage._save(name, content)
         super().save(name, self.local_storage._open(name), max_length=max_length)
-        if name == f'{settings.COMPRESS_OUTPUT_DIR}\manifest.json':
+        if name == f'{settings.COMPRESS_OUTPUT_DIR}/manifest.json':
             invalidate_static_manifest(name)
         return name

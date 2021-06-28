@@ -11,6 +11,7 @@ from django.conf import settings
 from django.db import models
 from django.db.models.fields.files import FieldFile, FileField, ImageField, ImageFile
 from django.test import TestCase
+from django.utils.timezone import now
 
 
 class CFFieldFile(FieldFile):
@@ -146,10 +147,10 @@ def invalidate_static_manifest(name):
                 'Paths': {
                     'Quantity': 1,
                     'Items': [
-                        f'/{settings.STATICFILES_LOCATION}/{name}',
+                        f'{settings.STATIC_URL}{name}',
                     ]
                 },
-                'CallerReference': 'jarrett.page'
+                'CallerReference': f'jarrett.page_{str(now())[:-6]}'
             }
         )
     except Exception as e:
