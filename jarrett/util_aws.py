@@ -12,8 +12,6 @@ from django.db import models
 from django.db.models.fields.files import FieldFile, FileField, ImageField, ImageFile
 from django.test import TestCase
 
-from .util import thread_task
-
 
 class CFFieldFile(FieldFile):
     @property
@@ -45,107 +43,12 @@ def s3_client():
     )
 
 
-def s3_resource():
-    return boto3.resource(
-        's3',
-        aws_secret_access_key=settings.S3_SECRET_KEY,
-        aws_access_key_id=settings.S3_ACCESS_KEY
-    )
-
-
 def cf_client():
     return boto3.client(
         'cloudfront',
         aws_secret_access_key=settings.CF_SECRET_KEY,
         aws_access_key_id=settings.CF_ACCESS_KEY
     )
-
-
-def s3_create_presigned_url(bucket_name, object_name, expiration=3600):
-    """Generate a presigned URL to share an S3 object
-    :param bucket_name: string
-    :param object_name: string
-    :param expiration: Time in seconds for the presigned URL to remain valid
-    :return: Presigned URL as string. If error, returns None.
-    """
-    # Generate a presigned URL for the S3 object
-    s3_client = boto3.client('s3',
-                             aws_access_key_id=settings.AWS_ACCESS_KEY_ID,
-                             aws_secret_access_key=settings.AWS_SECRET_ACCESS_KEY, )
-    try:
-        response = s3_client.generate_presigned_url('get_object',
-                                                    Params={'Bucket': bucket_name,
-                                                            'Key': object_name},
-                                                    ExpiresIn=expiration)
-    except ClientError as e:
-        logging.error(e)
-        return None
-    # The response contains the presigned URL
-    return response
-
-
-def s3_delete_object(bucket_name, object_name):
-    s3_client = boto3.client('s3',
-                             aws_access_key_id=settings.S3_ACCESS_KEY,
-                             aws_secret_access_key=settings.S3_SECRET_KEY, )
-    try:
-        response = s3_client.delete_object(
-            Bucket=bucket_name,
-            Key=object_name,
-        )
-    except ClientError as e:
-        logging.error(e)
-        return None
-    return response
-
-
-def update_s3_object_storage_class(s3_object_summary, storage_class: str) -> bool:
-    """
-    Update storage class for s3.ObjectSummary
-
-    Available storage classes:
-    [STANDARD, REDUCED_REDUNDANCY, STANDARD_IA, ONEZONE_IA, GLACIER, DEEP_ARCHIVE]
-
-    :param s3_object_summary: Current s3.ObjectSummary
-    :param storage_class: desired storage class, chose from list above
-    :return: True if changed, false if ignored
-    """
-    storage_classes = ['STANDARD', 'REDUCED_REDUNDANCY', 'STANDARD_IA', 'ONEZONE_IA', 'GLACIER', 'DEEP_ARCHIVE']
-    minimum_ia_size = 131072  # bytes
-    current_storage_class = s3_object_summary.storage_class
-
-    if storage_class not in storage_classes:
-        raise TypeError(f'{storage_class} is not a valid storage_class.\n'
-                        f'Options are {storage_classes}')
-
-    if storage_class == current_storage_class:
-        return False
-
-    if current_storage_class in ['GLACIER', 'DEEP_ARCHIVE']:
-        raise TypeError(f'FAILED TO UPDATE {s3_object_summary}\n:::'
-                        f'Glacier and Deep Freeze objects must be restored to change their storage class')
-
-    if storage_class in ['STANDARD_IA', 'ONEZONE_IA']:
-        # Check for min size or get charged a lot for really small files
-        if s3_object_summary.size < minimum_ia_size:
-            return False
-
-    # If not glacier and not too small update the storage class by copying to itself
-    s3_object = s3_object_summary.Object()
-    s3_object.copy(
-        {'Bucket': s3_object.bucket_name, 'Key': s3_object.key},
-        ExtraArgs={
-            'StorageClass': storage_class,
-        }
-    )
-    return True
-
-
-def update_s3_folder_storage_class(bucket_name, folder_prefix, storage_class):
-    client = s3_resource()
-    bucket = client.Bucket(bucket_name)
-    s3_object_summaries = list(bucket.objects.filter(Prefix=folder_prefix))
-    thread_task(update_s3_object_storage_class, s3_object_summaries, storage_class=storage_class)
 
 
 class S3CleanupTestCase(TestCase):

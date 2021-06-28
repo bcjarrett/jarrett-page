@@ -11,16 +11,8 @@
     "model": "sites.site",
     "pk": 2,
     "fields": {
-      "domain": "geomatix.us",
-      "name": "geomatix.us"
-    }
-  },
-  {
-    "model": "sites.site",
-    "pk": 3,
-    "fields": {
-      "domain": "localhost:8000",
-      "name": "localhost"
+      "domain": "jarrett.page",
+      "name": "jarrett.page"
     }
   }
 ]
