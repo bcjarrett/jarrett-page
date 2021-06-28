@@ -1,21 +1,63 @@
 .data-visualizer {
-	background-image: url("../images/geomatix_data_visualizer.jpg");
+	background: url("../images/geomatix_data_visualizer.jpg") no-repeat center;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
 }
+
 .minecraft {
-	background-image: url("../images/minecraft.jpg");
+	background: url("../images/minecraft.jpg") no-repeat center;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
 }
+
 .discord {
-	background-image: url("../images/discord.jpg");
+	background: url("../images/discord.jpg") no-repeat center;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
 }
+
 .zohoapi {
-	background-image: url("../images/zohoapi_pypi.jpg");
+	background: url("../images/zohoapi_pypi.jpg") no-repeat center;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
 }
+
 .craigslist {
-	background-image: url("../images/craigslist.jpg");
+	background: url("../images/craigslist.jpg") no-repeat center;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
 }
+
 .jarrett-page {
-	background-image: url("../images/discord.jpg");
+	background: url("../images/jarrett_page.jpg") no-repeat center;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
 }
+
 .geomatix-us {
-	background-image: url("../images/geomatix_us.jpg");
+	background: url("../images/geomatix_us.jpg") no-repeat center;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+.intro {
+	background: url("../images/github_bg.jpg") no-repeat center;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
 }
