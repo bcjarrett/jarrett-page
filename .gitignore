@@ -2,3 +2,5 @@
 /staticfiles
 /.idea
 /secrets.json
+/.venv
+/.vscode
