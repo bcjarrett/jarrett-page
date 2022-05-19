@@ -54,6 +54,14 @@
 	background-size: cover;
 }
 
+.other {
+	background: url("../images/other_bg.jpg") no-repeat center;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
 .intro {
 	background: url("../images/github_bg.jpg") no-repeat center;
 	-webkit-background-size: cover;

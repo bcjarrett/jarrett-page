@@ -1,0 +1,25 @@
+{% extends 'portfolio/helpers/text_card.html' %}
+{% block image_left %}
+	{% include 'portfolio/helpers/image_card.html' with src="images/vegetation_heatmap.jpg" alt="jarrett.page" %}
+{% endblock %}
+
+{% block text_content %}
+	<h2 class="card-title">Other Projects</h2>
+	<p class="card-text">
+		By no means is the above list exhaustive. I have a lot of smaller projects that don't merit their own section. I
+		host a dockerized plex server for friends and family, I've spent a lot of time moving around large datasets with
+		SQL and inside access databases. I've used SQL data to put together web-based charting for management and sales
+		teams. I've written Javascript to support a web scraping tool. I've written python wrappers for a number of
+		smaller APIs like BaseCamp or an OracleZFS system. I've  configured and managed the deployment of thousands of
+		Windows machines.
+	</p>
+	<p>
+		I also got to work on a lot of cool CAD & GIS projects at Geomatix. Pictured here is a heatmap of invasive vegetation.
+		To produce this, I captured the aerial imagery data in the field, processed it into the overhead map, performed a supervised
+		classification of fauna, then brought it to life with open source GIS visualization tools.
+	</p>
+	<p class="card-text">
+		I really enjoy learning new tools and technologies and try to seize every opportunity to
+		delve into something new. I am greatly looking forward to pursuing similar opportunities in the future.
+	</p>
+{% endblock %}

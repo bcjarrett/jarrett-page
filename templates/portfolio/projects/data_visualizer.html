@@ -7,31 +7,28 @@
 {% block text_content %}
 	<h2 class="card-title">GIS Data Visualizer</h2>
 	<p class="card-text">
-		At Geomatix, most of our deliverables are incredibly cumbersome and unfamiliar filetypes. A
-		typical project ends up with a raster map greater than 3GB and a .las file point-cloud of a similar
-		size. For many of our clients, particularly those on the management teams, using these files is near
-		impossible. To make our work-products more accessible, I designed, developed, deployed, and maintained a
-		customer-facing website where we could host these files and share them with our clients in a
-		way that didn't requires advanced software or know-how.
+		At my former employer, Geomatix, deliverables were typically large and an in unfamiliar format for most users.
+		To address this, I built out a custom client portal to help clients visualize and interact with these files.
+		A typical project would result in a large .TIFF raster map, a .LAS point-cloud, and other smaller CAD files.
+		For users unfamiliar with CAD or GIS software, opening these 5+ GB files was not a realistic option, so I
+		converted our download portal into a GIS data visualization tool.
 	</p>
 	<p class="card-text">
-		This project is a large django app, deployed to Heroku. Files are hosted on AWS S3 and
-		served over AWS CloudFront. Clients are invited to a website that is not accessible to the public where they
+		This project was built as a large django app, deployed to Heroku. Files were hosted on AWS S3 and
+		served over AWS CloudFront. Clients are invited to a private website where they
 		may view, manipulate, and download their data. The open source projects
 		<a href="https://openlayers.org/">OpenLayers</a> and <a
 			href="https://potree.github.io/">Potree</a>
 		have been used as the primary visualization tools.
 	</p>
 	<p class="card-text">
-		A large part of the project is built to pre-process and upload the
-		many thousands of files required for a single dataset. While the project was originally
-		designed to handle this pre-processing in a separate celery queue, cost concerns have dictated that we
-		perform data-preprocessing locally and upload the final files directly to S3.
+		The web interface is supported on the backend by a robust codebase designed to process, tag and upload files
+		to the website. A single GeoTiff map can generate many thousands of files when processed and uploaded.
 	</p>
 	<p class="card-text">
-		While the source code for this is largely owned by my employer, they have allowed me to
-		share
+		The source code for this is owned by my former employer, but they have allowed me to share
 		<a href="https://download.geomatix.us/visualizer/shared-project/?token=c0aea622-7020-45ad-b633-25789f633abc&project_guid=a13689c2-50b9-4390-9f2f-3b30c0336140">
-			a link to a set of sample dataset</a> in my portfolio.
+			a link to a set of sample dataset</a> for my portfolio. Please note that this project is no longer hosted
+		or maintained by me, and may or may not work as it was originally designed.
 	</p>
 {% endblock %}
