@@ -1,8 +1,20 @@
-# jarrett_page
-This is a simple portfolio webpage built as a single-app django project.
+# ~Disclaimer
 
-Hosting is provided by heroku, traffic is routed via clodflare. Static assets are service via static.jarrett.page via AWS cloudfront. 
+This project is out of date and is no longer hosted. The repository remains available for reference only.
 
-Simple browserfy transpiling bundles and simplifys JS and CSS assets.
+# Simple Django Webapp
 
-Styling is built on Bootstrap 5. Some jquery and vanilla JS is used to manage the page location and sidebar.
+## Overview
+
+This repository contains the source code for a simple, single-app Django portfolio webpage. The site is designed to
+showcase knowledge of django & python basics, javascript and CSS, use of AWS services, static asset management, and 
+simple server deployment.
+
+## Features
+
+- Django Web Application: A single-app Django project, showcasing a portfolio.
+- Hosting: The application is hosted on Heroku, with traffic routing via Cloudflare.
+- Static Asset Management: Static assets are served via static.jarrett.page using AWS CloudFront.
+- Frontend: Utilizes Bootstrap 5 for styling, with a combination of jQuery and vanilla JavaScript for dynamic content
+  management.
+- Asset Optimization: Browserify is used for transpiling, bundling, and simplifying JS and CSS assets.
